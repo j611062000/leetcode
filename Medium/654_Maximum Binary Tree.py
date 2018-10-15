@@ -14,9 +14,6 @@ class Solution(object):
         if not root: 
         	return None
 
-        elif not root.left and not root.right and not root.val:
-        	return None
-
         root.left = self.pruneTree(root.left)
         root.right = self.pruneTree(root.right)
 
