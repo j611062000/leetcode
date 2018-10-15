@@ -5,30 +5,27 @@
 #         self.left = None
 #         self.right = None
 
-
 class Solution(object):
-
-    def constructMaximumBinaryTree(self, nums):
+    def pruneTree(self, root):
         """
-        :type nums: List[int]
+        :type root: TreeNode
         :rtype: TreeNode
         """
-        if len(nums) == 1:
-            return TreeNode(nums[0])
-        elif not nums:
+        if not root: 
         	return None
 
-        max_temp = (float("-inf"), 0)
-        for i, element in enumerate(nums):
-            if element > max_temp[0]:
-                max_temp[0] = element
-                max_temp[1] = i
+        elif not root.left and not root.right and not root.val:
+        	return None
 
-        root = TreeNode(max_temp[0])
-        root.left = self.constructMaximumBinaryTree(nums[:max_temp[1]])
-        root.right = self.constructMaximumBinaryTree(nums[max_temp[1] + 1:])
+        root.left = self.pruneTree(root.left)
+        root.right = self.pruneTree(root.right)
 
-        return root
+        if root.val:
+        	return root
 
+        elif root.left is None and root.right is None:
+        	return None
 
-x = [3, 2, 1, 6, 0, 5]
+        else:
+        	return root
+
