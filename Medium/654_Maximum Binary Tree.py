@@ -20,10 +20,7 @@ class Solution(object):
         root.left = self.pruneTree(root.left)
         root.right = self.pruneTree(root.right)
 
-        if root.val:
-        	return root
-
-        elif root.left is None and root.right is None:
+        if root.left is None and root.right is None and not root.val:
         	return None
 
         else:
