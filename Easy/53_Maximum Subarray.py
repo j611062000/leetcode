@@ -22,10 +22,6 @@ class Solution(object):
             		s_max = element + s_max
             else:
                 s_max = 0
-        print(start, end)
         return max(nums) if g_max < 0 else g_max
 
 
-ans = Solution()
-test = [2, -3, 1.5, -1, 3, -2, -3, 3]
-print(ans.maxSubArray(test))
