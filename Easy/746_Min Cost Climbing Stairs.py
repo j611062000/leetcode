@@ -17,16 +17,14 @@ class Solution(object):
         :rtype: int
         """
         # temp[]: the cost of length(i)
-        n_1 = 0
-        n_2 = 0
+        n_1 = cost[1]
+        n_2 = cost[0]
         temp = None
-        penultimate_element = 0
-        for element in cost:
+        for element in cost[2:]:
             temp = n_1
-            n_1 = min(element + n_1, n_2 + penultimate_element)
+            n_1 = min(n_1, n_2) + element
             n_2 = temp
-            penultimate_element = element
-        return n_1
+        return min(n_1, n_2)
 
 if __name__ == "__main__":
     data = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
