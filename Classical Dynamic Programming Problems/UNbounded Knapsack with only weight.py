@@ -10,7 +10,7 @@ def unboundedKnapsackOnlyWeight(capacity, items):
                     combination[i] = [*combination[i - item], item]
                 else:
                     dp[i] = 0
-                    
+
     print(combination)
     return dp
 

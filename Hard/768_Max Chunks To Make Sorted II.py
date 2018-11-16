@@ -1,23 +1,29 @@
-def maxChunksToSorted(arr):
-    """
-    :type arr: List[int]
-    :rtype: int
-    """
-    temp = sorted(arr)
-    print(temp)
+class Solution(object):
 
-    flag = 0
-    count = 0
-    for i in range(len(temp)):
-    	if temp[i] == arr[i]:
-    		arr[i] = ""
+    def maxChunksToSorted(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
 
-    	if arr[i] != "":
-    		flag = 1
-    	elif flag == 1:
-    		count += 1
-    		flag = 0
-    print(arr)
-    return count
+        max_record = [arr[0]]
+        for element in arr[1:]:
+            for count, max_num in enumerate(max_record):
+                if element < max_num:
+                    temp_max = max_record[-1]
+                    if len(max_record) > count:
+                        max_record = max_record[:count]
+                    max_record.append(max(temp_max, element))
+                    break
+                elif count == len(max_record)-1:
+                    max_record.append(element)
+                    break
 
-print(maxChunksToSorted([5,4,3,2,1]))
+
+        return len(max_record)
+
+
+if __name__ == "__main__":
+    data = [5,4,3,2,1]
+
+    print(Solution().maxChunksToSorted(data))
