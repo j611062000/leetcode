@@ -1,8 +1,8 @@
 class Solution:
-    def minPathSum(self, grid: List[List[int]]) -> int:
+    def minPathSum(self, grid: list[list[int]]) -> int:
         r = len(grid)
         c = len(grid[0])
-        dp = {(0,0): grid[0][0]}
+        dp: dict[tuple[int, int], int] = {(0,0): grid[0][0]}
 
         for i in range(r):
             if i != 0:
